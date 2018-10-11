@@ -3,6 +3,8 @@ package com.dicV2;
 import com.darkprograms.speech.synthesiser.Synthesiser;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;

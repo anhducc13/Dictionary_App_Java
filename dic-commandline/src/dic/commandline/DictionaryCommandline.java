@@ -7,16 +7,17 @@ public class DictionaryCommandline {
 
     static DictionaryManagement DicMana = new DictionaryManagement();
     static Scanner sc = new Scanner(System.in);
-    
+
     // Xóa màn hình
     public void CLS() throws IOException, InterruptedException {
         new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
     }
-    
+
     // Menu option
     public void run() throws IOException, InterruptedException {
         DicMana.insertFromFile();
         int option;
+
         do {
             System.out.println("----------------------------------");
             System.out.println("------ DICTIONARY EN <-> VI ------");
@@ -29,7 +30,6 @@ public class DictionaryCommandline {
             System.out.println("6. Show All");
             System.out.println("7. End");
             System.out.println("---------------------------------");
-
             option = sc.nextInt();
             CLS();
 
