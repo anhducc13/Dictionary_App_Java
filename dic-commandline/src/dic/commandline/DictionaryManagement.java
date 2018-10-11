@@ -11,7 +11,7 @@ public class DictionaryManagement {
     Dictionary dic = new Dictionary();
 
     private Scanner sc = new Scanner(System.in);
-    private final String fileName = "data\\dictionaries.txt";
+    private final String fileName = "dictionaries.txt";
 
     // Tìm kiếm nhị phân Word
     public int binarySreachWord(String str) {
