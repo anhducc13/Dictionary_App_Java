@@ -24,7 +24,7 @@ public class DictionaryManagement {
     
     public boolean addWordToDictionary(Word w) {
         if(dic.insertToList(w)) {
-            SP.insertToSQL(w);
+//            SP.insertToSQL(w);
             return true;
         }
         return false;
@@ -32,7 +32,7 @@ public class DictionaryManagement {
     
     public boolean editWordInDictionary(Word oldWord, Word newWord) {
         if(dic.editWordInList(oldWord, newWord)) {
-            SP.editWordInSQL(oldWord, newWord);
+//            SP.editWordInSQL(oldWord, newWord);
             return true;
         } else {
             return false;
@@ -41,7 +41,7 @@ public class DictionaryManagement {
     
     public void deleteWordInDictionary(Word w) {
         dic.deleteInList(w);
-        SP.deleteInSQL(w);
+//        SP.deleteInSQL(w);
     }
     
     public void deleteWordInSaved(Word w) {

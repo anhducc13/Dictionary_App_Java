@@ -81,10 +81,8 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jPaneDefaultInfo = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
         jPaneOptionSearchMode = new javax.swing.JPanel();
         jBtnDelSearchMode = new javax.swing.JButton();
         jBtnSaveSearchMode = new javax.swing.JButton();
@@ -98,10 +96,8 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jPaneInfo = new javax.swing.JPanel();
         jInfoExplain = new javax.swing.JLabel();
         jInfoSpelling = new javax.swing.JLabel();
-        jInfoPronc = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
         jBtnSpeaker = new javax.swing.JButton();
 
         jButton6.setText("jButton6");
@@ -436,29 +432,20 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Nghĩa Tiếng Việt");
-        jPaneDefaultInfo.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, 40));
+        jPaneDefaultInfo.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 180, 40));
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Từ vựng");
         jPaneDefaultInfo.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, 40));
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel14.setText("Phát âm");
-        jPaneDefaultInfo.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 180, 40));
-
         jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Sphere_8px.png"))); // NOI18N
         jLabel10.setText("jLabel10");
-        jPaneDefaultInfo.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 20, 40));
+        jPaneDefaultInfo.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 20, 40));
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Sphere_8px.png"))); // NOI18N
         jLabel11.setText("jLabel10");
         jPaneDefaultInfo.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 20, 40));
-
-        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Sphere_8px.png"))); // NOI18N
-        jLabel15.setText("jLabel10");
-        jPaneDefaultInfo.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 20, 40));
 
         jPanel1.add(jPaneDefaultInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 210, 290));
 
@@ -560,27 +547,19 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         jInfoExplain.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jInfoExplain.setForeground(new java.awt.Color(255, 255, 255));
-        jPaneInfo.add(jInfoExplain, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 180, 40));
+        jPaneInfo.add(jInfoExplain, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 180, 40));
 
         jInfoSpelling.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jInfoSpelling.setForeground(new java.awt.Color(255, 255, 255));
         jPaneInfo.add(jInfoSpelling, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, 40));
 
-        jInfoPronc.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        jInfoPronc.setForeground(new java.awt.Color(255, 255, 255));
-        jPaneInfo.add(jInfoPronc, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 180, 40));
-
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Sphere_8px.png"))); // NOI18N
         jLabel19.setText("jLabel10");
-        jPaneInfo.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 20, 40));
+        jPaneInfo.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 20, 40));
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Sphere_8px.png"))); // NOI18N
         jLabel20.setText("jLabel10");
         jPaneInfo.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 20, 40));
-
-        jLabel21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Sphere_8px.png"))); // NOI18N
-        jLabel21.setText("jLabel10");
-        jPaneInfo.add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 20, 40));
 
         jBtnSpeaker.setBackground(new java.awt.Color(0, 0, 56));
         jBtnSpeaker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Speaker_30px_1.png"))); // NOI18N
@@ -776,7 +755,8 @@ public class DictionaryApplication extends javax.swing.JFrame {
     }//GEN-LAST:event_jBtnEditSearchModeActionPerformed
 
     private void jboxSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jboxSearchKeyReleased
-
+        jPaneInfo.setVisible(false);
+        jPaneDefaultInfo.setVisible(true);
         if (searchMode) {
             if (jboxSearch.getText().equals("")) {
                 dlmWord.clear();
@@ -802,7 +782,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jPaneDefaultInfo.setVisible(false);
         jPaneInfo.setVisible(true);
         jInfoSpelling.setText(w.getWord_taget());
-        jInfoPronc.setText("Phát âm");
         jInfoExplain.setText(w.getWord_explain());
     }//GEN-LAST:event_jListWordMouseClicked
 
@@ -1102,17 +1081,13 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JLabel jHome;
     private javax.swing.JLabel jImportant;
     private javax.swing.JLabel jInfoExplain;
-    private javax.swing.JLabel jInfoPronc;
     private javax.swing.JLabel jInfoSpelling;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

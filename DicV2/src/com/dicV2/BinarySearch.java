@@ -54,7 +54,7 @@ public class BinarySearch {
 
         int posStart = -1;
         int lo = 0, hi = list.size() - 1, mid;
-        while (lo < hi) {
+        while (lo <= hi) {
             mid = lo + (hi - lo) / 2;
             int cp = list.get(mid).compareTo(str);
             int posInW = list.get(mid).getWord_taget().indexOf(str);
@@ -64,9 +64,9 @@ public class BinarySearch {
                 break;
             } else {
                 if (cp < 0) {
-                    lo = mid;
+                    lo = mid + 1;
                 } else {
-                    hi = mid;
+                    hi = mid - 1;
                 }
             }
         }
