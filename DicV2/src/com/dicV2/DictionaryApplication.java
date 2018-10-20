@@ -61,8 +61,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jBoxEdit1 = new javax.swing.JFormattedTextField();
         jSeparator3 = new javax.swing.JSeparator();
         jBoxEdit2 = new javax.swing.JFormattedTextField();
-        jSeparator4 = new javax.swing.JSeparator();
-        jBoxEdit3 = new javax.swing.JFormattedTextField();
         jSeparator5 = new javax.swing.JSeparator();
         jBoxEdit4 = new javax.swing.JFormattedTextField();
         jBtnOkEdit = new javax.swing.JButton();
@@ -71,8 +69,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jPaneAddAction = new javax.swing.JPanel();
         jSeparator7 = new javax.swing.JSeparator();
         jBoxAdd1 = new javax.swing.JFormattedTextField();
-        jSeparator8 = new javax.swing.JSeparator();
-        jBoxAdd2 = new javax.swing.JFormattedTextField();
         jSeparator9 = new javax.swing.JSeparator();
         jBoxAdd3 = new javax.swing.JFormattedTextField();
         jBtnOkAdd = new javax.swing.JButton();
@@ -267,7 +263,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jBoxEdit1.setForeground(new java.awt.Color(255, 255, 255));
         jBoxEdit1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jPaneEditAction.add(jBoxEdit1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 50, 220, 36));
-        jPaneEditAction.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 220, -1));
+        jPaneEditAction.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 220, -1));
 
         jBoxEdit2.setBackground(new java.awt.Color(0, 0, 34));
         jBoxEdit2.setBorder(null);
@@ -282,23 +278,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 jBoxEdit2FocusLost(evt);
             }
         });
-        jPaneEditAction.add(jBoxEdit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, 36));
-        jPaneEditAction.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 180, 220, -1));
-
-        jBoxEdit3.setBackground(new java.awt.Color(0, 0, 34));
-        jBoxEdit3.setBorder(null);
-        jBoxEdit3.setForeground(new java.awt.Color(153, 153, 153));
-        jBoxEdit3.setText("Nhập cách phát âm ......");
-        jBoxEdit3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jBoxEdit3.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jBoxEdit3FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jBoxEdit3FocusLost(evt);
-            }
-        });
-        jPaneEditAction.add(jBoxEdit3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 220, 36));
+        jPaneEditAction.add(jBoxEdit2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 220, 36));
         jPaneEditAction.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 230, 220, 2));
 
         jBoxEdit4.setBackground(new java.awt.Color(0, 0, 34));
@@ -347,7 +327,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         jPaneAddAction.setBackground(new java.awt.Color(0, 0, 34));
         jPaneAddAction.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        jPaneAddAction.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 220, -1));
+        jPaneAddAction.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 220, -1));
 
         jBoxAdd1.setBackground(new java.awt.Color(0, 0, 34));
         jBoxAdd1.setBorder(null);
@@ -362,23 +342,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 jBoxAdd1FocusLost(evt);
             }
         });
-        jPaneAddAction.add(jBoxAdd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 220, 36));
-        jPaneAddAction.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 220, 2));
-
-        jBoxAdd2.setBackground(new java.awt.Color(0, 0, 34));
-        jBoxAdd2.setBorder(null);
-        jBoxAdd2.setForeground(new java.awt.Color(153, 153, 153));
-        jBoxAdd2.setText("Nhập cách phát âm ......");
-        jBoxAdd2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jBoxAdd2.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jBoxAdd2FocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jBoxAdd2FocusLost(evt);
-            }
-        });
-        jPaneAddAction.add(jBoxAdd2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 220, 36));
+        jPaneAddAction.add(jBoxAdd1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 220, 36));
         jPaneAddAction.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 190, 220, 2));
 
         jBoxAdd3.setBackground(new java.awt.Color(0, 0, 34));
@@ -676,19 +640,15 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
     private void jBtnRefreshEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRefreshEditActionPerformed
         jBoxEdit2.setText("Nhập từ mới ......");
-        jBoxEdit3.setText("Nhập cách phát âm ......");
         jBoxEdit4.setText("Nghĩa Tiếng Việt ......");
         jBoxEdit2.setForeground(new Color(153, 153, 153));
-        jBoxEdit3.setForeground(new Color(153, 153, 153));
         jBoxEdit4.setForeground(new Color(153, 153, 153));
     }//GEN-LAST:event_jBtnRefreshEditActionPerformed
 
     private void jBtnRefreshAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnRefreshAddActionPerformed
         jBoxAdd1.setText("Nhập từ mới ......");
-        jBoxAdd2.setText("Nhập cách phát âm ......");
         jBoxAdd3.setText("Nghĩa Tiếng Việt ......");
         jBoxAdd1.setForeground(new Color(153, 153, 153));
-        jBoxAdd2.setForeground(new Color(153, 153, 153));
         jBoxAdd3.setForeground(new Color(153, 153, 153));
     }//GEN-LAST:event_jBtnRefreshAddActionPerformed
 
@@ -836,20 +796,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBoxEdit2FocusLost
 
-    private void jBoxEdit3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBoxEdit3FocusGained
-        if (jBoxEdit3.getText().equals("Nhập cách phát âm ......")) {
-            jBoxEdit3.setText("");
-            jBoxEdit3.setForeground(new Color(255, 255, 255));
-        }
-    }//GEN-LAST:event_jBoxEdit3FocusGained
-
-    private void jBoxEdit3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBoxEdit3FocusLost
-        if (jBoxEdit3.getText().equals("")) {
-            jBoxEdit3.setText("Nhập cách phát âm ......");
-            jBoxEdit3.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_jBoxEdit3FocusLost
-
     private void jBoxEdit4FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBoxEdit4FocusGained
         if (jBoxEdit4.getText().equals("Nghĩa Tiếng Việt ......")) {
             jBoxEdit4.setText("");
@@ -866,7 +812,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
     private void jBtnOkEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkEditActionPerformed
         if (jBoxEdit2.getText().equals("Nhập từ mới ......")
-                || jBoxEdit3.getText().equals("Nhập cách phát âm ......")
                 || jBoxEdit4.getText().equals("Nghĩa Tiếng Việt ......")) {
             JOptionPane.showMessageDialog(rootPane, "Không được để trống");
         } else {
@@ -882,10 +827,8 @@ public class DictionaryApplication extends javax.swing.JFrame {
             DLMLoadList(Dictionary.listWord);
             jBoxEdit1.setText("");
             jBoxEdit2.setText("Nhập từ mới ......");
-            jBoxEdit3.setText("Nhập cách phát âm ......");
             jBoxEdit4.setText("Nghĩa Tiếng Việt ......");
             jBoxEdit2.setForeground(new Color(153, 153, 153));
-            jBoxEdit3.setForeground(new Color(153, 153, 153));
             jBoxEdit4.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jBtnOkEditActionPerformed
@@ -896,13 +839,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
             jBoxAdd1.setForeground(new Color(255, 255, 255));
         }
     }//GEN-LAST:event_jBoxAdd1FocusGained
-
-    private void jBoxAdd2FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBoxAdd2FocusGained
-        if (jBoxAdd2.getText().equals("Nhập cách phát âm ......")) {
-            jBoxAdd2.setText("");
-            jBoxAdd2.setForeground(new Color(255, 255, 255));
-        }
-    }//GEN-LAST:event_jBoxAdd2FocusGained
 
     private void jBoxAdd3FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBoxAdd3FocusGained
         if (jBoxAdd3.getText().equals("Nghĩa Tiếng Việt ......")) {
@@ -918,13 +854,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBoxAdd1FocusLost
 
-    private void jBoxAdd2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBoxAdd2FocusLost
-        if (jBoxAdd2.getText().equals("")) {
-            jBoxAdd2.setText("Nhập cách phát âm ......");
-            jBoxAdd2.setForeground(new Color(153, 153, 153));
-        }
-    }//GEN-LAST:event_jBoxAdd2FocusLost
-
     private void jBoxAdd3FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jBoxAdd3FocusLost
         if (jBoxAdd3.getText().equals("")) {
             jBoxAdd3.setText("Nghĩa Tiếng Việt ......");
@@ -934,7 +863,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
     private void jBtnOkAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnOkAddActionPerformed
         if (jBoxAdd1.getText().equals("Nhập từ mới ......")
-                || jBoxAdd2.getText().equals("Nhập cách phát âm ......")
                 || jBoxAdd3.getText().equals("Nghĩa Tiếng Việt ......")) {
             JOptionPane.showMessageDialog(rootPane, "Không được để trống");
         } else {
@@ -948,10 +876,8 @@ public class DictionaryApplication extends javax.swing.JFrame {
             jPaneInfo.setVisible(false);
             DLMLoadList(Dictionary.listWord);
             jBoxAdd1.setText("Nhập từ mới ......");
-            jBoxAdd2.setText("Nhập cách phát âm ......");
             jBoxAdd3.setText("Nghĩa Tiếng Việt ......");
             jBoxAdd1.setForeground(new Color(153, 153, 153));
-            jBoxAdd2.setForeground(new Color(153, 153, 153));
             jBoxAdd3.setForeground(new Color(153, 153, 153));
         }
     }//GEN-LAST:event_jBtnOkAddActionPerformed
@@ -1009,7 +935,6 @@ public class DictionaryApplication extends javax.swing.JFrame {
                     jPaneDefaultInfo.setVisible(true);
                     jPaneInfo.setVisible(false);
                     DLMLoadList(ListWordSaved.listWordSaved);
-                    dlmWord.clear();
                     break;
                 case JOptionPane.CLOSED_OPTION:
                     break;
@@ -1057,11 +982,9 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JFormattedTextField jBoxAdd1;
-    private javax.swing.JFormattedTextField jBoxAdd2;
     private javax.swing.JFormattedTextField jBoxAdd3;
     private javax.swing.JFormattedTextField jBoxEdit1;
     private javax.swing.JFormattedTextField jBoxEdit2;
-    private javax.swing.JFormattedTextField jBoxEdit3;
     private javax.swing.JFormattedTextField jBoxEdit4;
     private javax.swing.JButton jBtnAddSearchMode;
     private javax.swing.JButton jBtnDelHistoryMode;
@@ -1112,11 +1035,9 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JFormattedTextField jboxSearch;
     // End of variables declaration//GEN-END:variables
