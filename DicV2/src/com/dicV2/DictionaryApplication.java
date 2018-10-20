@@ -1,12 +1,15 @@
 package com.dicV2;
 
 import com.darkprograms.speech.synthesiser.Synthesiser;
+import com.darkprograms.speech.translator.GoogleTranslate;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javazoom.jl.decoder.JavaLayerException;
@@ -19,7 +22,7 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 public class DictionaryApplication extends javax.swing.JFrame {
 
     int xMouse, yMouse;
-    boolean searchMode, savedWordMode, historyWordMode;
+    boolean searchMode, savedWordMode, historyWordMode, translateMode;
     DictionaryManagement dicMana = new DictionaryManagement();
 
     DefaultListModel<String> dlmWord = new DefaultListModel<>();
@@ -50,6 +53,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jboxSearch = new javax.swing.JFormattedTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListWord = new javax.swing.JList<>();
+        jTranslate = new javax.swing.JLabel();
         jPaneDrag = new javax.swing.JPanel();
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
@@ -95,6 +99,14 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jBtnSpeaker = new javax.swing.JButton();
+        jPaneTranslate = new javax.swing.JPanel();
+        jLabel14 = new javax.swing.JLabel();
+        jComboBox = new javax.swing.JComboBox<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        jButtonTran = new javax.swing.JButton();
 
         jButton6.setText("jButton6");
 
@@ -127,7 +139,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 jHomeMouseClicked(evt);
             }
         });
-        jPanel2.add(jHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 50));
+        jPanel2.add(jHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 52, 50));
 
         jImportant.setBackground(new java.awt.Color(0, 0, 56));
         jImportant.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,7 +151,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 jImportantMouseClicked(evt);
             }
         });
-        jPanel2.add(jImportant, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 0, 70, 50));
+        jPanel2.add(jImportant, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 0, 52, 50));
 
         jHistory.setBackground(new java.awt.Color(0, 0, 56));
         jHistory.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -151,7 +163,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 jHistoryMouseClicked(evt);
             }
         });
-        jPanel2.add(jHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 0, 70, 50));
+        jPanel2.add(jHistory, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 0, 52, 50));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -207,6 +219,18 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         jPanel2.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 90, 200, 240));
 
+        jTranslate.setBackground(new java.awt.Color(0, 0, 56));
+        jTranslate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jTranslate.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8-google-translate-30 (1).png"))); // NOI18N
+        jTranslate.setToolTipText("Translate");
+        jTranslate.setOpaque(true);
+        jTranslate.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTranslateMouseClicked(evt);
+            }
+        });
+        jPanel2.add(jTranslate, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 0, 52, 50));
+
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 40, 208, 344));
 
         jPaneDrag.setBackground(new java.awt.Color(0, 0, 34));
@@ -239,7 +263,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
                 jExitMouseClicked(evt);
             }
         });
-        jPaneDrag.add(jExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(732, 0, 50, 40));
+        jPaneDrag.add(jExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 50, 40));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
@@ -251,7 +275,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jLabelCntWord.setForeground(new java.awt.Color(255, 255, 255));
         jPaneDrag.add(jLabelCntWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 0, 120, 40));
 
-        jPanel1.add(jPaneDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 780, 38));
+        jPanel1.add(jPaneDrag, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 2, 810, 38));
 
         jPaneEditAction.setBackground(new java.awt.Color(0, 0, 34));
         jPaneEditAction.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -511,19 +535,19 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         jInfoExplain.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jInfoExplain.setForeground(new java.awt.Color(255, 255, 255));
-        jPaneInfo.add(jInfoExplain, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 180, 40));
+        jPaneInfo.add(jInfoExplain, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 180, 90));
 
         jInfoSpelling.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jInfoSpelling.setForeground(new java.awt.Color(255, 255, 255));
-        jPaneInfo.add(jInfoSpelling, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, 40));
+        jPaneInfo.add(jInfoSpelling, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 180, 60));
 
         jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Sphere_8px.png"))); // NOI18N
         jLabel19.setText("jLabel10");
-        jPaneInfo.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, 20, 40));
+        jPaneInfo.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 20, 40));
 
         jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Sphere_8px.png"))); // NOI18N
         jLabel20.setText("jLabel10");
-        jPaneInfo.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 20, 40));
+        jPaneInfo.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 20, 40));
 
         jBtnSpeaker.setBackground(new java.awt.Color(0, 0, 56));
         jBtnSpeaker.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/icons8_Speaker_30px_1.png"))); // NOI18N
@@ -538,7 +562,51 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         jPanel1.add(jPaneInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 40, 280, 290));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 780, 390));
+        jPaneTranslate.setBackground(new java.awt.Color(0, 0, 34));
+        jPaneTranslate.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel14.setText("TRANSLATE");
+        jPaneTranslate.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 120, 40));
+
+        jComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "VI -> EN", "EN -> VI" }));
+        jPaneTranslate.add(jComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, -1, 25));
+
+        jScrollPane2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane2.setHorizontalScrollBar(null);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jScrollPane2.setViewportView(jTextArea1);
+
+        jPaneTranslate.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 230, 100));
+
+        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Segoe UI", 0, 13)); // NOI18N
+        jTextArea2.setLineWrap(true);
+        jTextArea2.setRows(5);
+        jScrollPane3.setViewportView(jTextArea2);
+
+        jPaneTranslate.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 230, 110));
+
+        jButtonTran.setText("Dịch");
+        jButtonTran.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTranActionPerformed(evt);
+            }
+        });
+        jPaneTranslate.add(jButtonTran, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 160, -1, -1));
+
+        jPanel1.add(jPaneTranslate, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 50, 270, 330));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 390));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -558,7 +626,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
         setCursor();
         setDefaultConfig();
-        setModeSearch(true, false, false);
+        setModeSearch(true, false, false, false);
     }
 
     private void DLMLoadList(ArrayList<Word> list) {
@@ -567,7 +635,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
         listShow.forEach((ele) -> {
             dlmWord.addElement(ele.getWord_taget());
         });
-        
+
     }
 
     private void setDefaultConfig() {
@@ -578,14 +646,16 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jPaneInfo.setVisible(false);
         jPaneAddAction.setVisible(true);
         jPaneEditAction.setVisible(false);
+        jPaneTranslate.setVisible(false);
     }
 
-    private void setModeSearch(boolean _searchMode, boolean _savedWordMode, boolean _historyWordMode) {
+    private void setModeSearch(boolean _searchMode, boolean _savedWordMode, boolean _historyWordMode, boolean _translateMode) {
         searchMode = _searchMode;
         if (searchMode) {
             jHome.setBackground(new Color(0, 0, 3));
             jImportant.setBackground(new Color(0, 0, 56));
             jHistory.setBackground(new Color(0, 0, 56));
+            jTranslate.setBackground(new Color(0, 0, 56));
             jPaneEditAction.setVisible(!searchMode);
         }
         savedWordMode = _savedWordMode;
@@ -593,17 +663,27 @@ public class DictionaryApplication extends javax.swing.JFrame {
             jHome.setBackground(new Color(0, 0, 56));
             jImportant.setBackground(new Color(0, 0, 3));
             jHistory.setBackground(new Color(0, 0, 56));
+            jTranslate.setBackground(new Color(0, 0, 56));
         }
         historyWordMode = _historyWordMode;
         if (historyWordMode) {
             jHome.setBackground(new Color(0, 0, 56));
             jImportant.setBackground(new Color(0, 0, 56));
             jHistory.setBackground(new Color(0, 0, 3));
+            jTranslate.setBackground(new Color(0, 0, 56));
+        }
+        translateMode = _translateMode;
+        if (translateMode) {
+            jHome.setBackground(new Color(0, 0, 56));
+            jImportant.setBackground(new Color(0, 0, 56));
+            jHistory.setBackground(new Color(0, 0, 56));
+            jTranslate.setBackground(new Color(0, 0, 3));
         }
         jPaneAddAction.setVisible(searchMode);
         jPaneOptionSearchMode.setVisible(searchMode);
         jPaneOptionSaveMode.setVisible(savedWordMode);
         jPaneOptionHistoryMode.setVisible(historyWordMode);
+        jPaneTranslate.setVisible(translateMode);
         jPaneDefaultInfo.setVisible(true);
         jPaneInfo.setVisible(false);
     }
@@ -625,6 +705,8 @@ public class DictionaryApplication extends javax.swing.JFrame {
         jBtnSaveHistoryMode.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jBtnDelHistoryMode.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jBtnDelSaveMode.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jTranslate.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        jButtonTran.setCursor(new Cursor(Cursor.HAND_CURSOR));
     }
 
     private void jPaneDragMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPaneDragMouseDragged
@@ -659,7 +741,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
     private void jHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHomeMouseClicked
         if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
-            setModeSearch(true, false, false);
+            setModeSearch(true, false, false, false);
             jboxSearch.setText("");
             dlmWord.clear();
         }
@@ -667,7 +749,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
     private void jImportantMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jImportantMouseClicked
         if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
-            setModeSearch(false, true, false);
+            setModeSearch(false, true, false, false);
             jboxSearch.setText("");
             DLMLoadList(ListWordSaved.listWordSaved);
             jListWord.setModel(dlmWord);
@@ -676,11 +758,11 @@ public class DictionaryApplication extends javax.swing.JFrame {
 
     private void jHistoryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jHistoryMouseClicked
         if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
-            setModeSearch(false, false, true);
+            setModeSearch(false, false, true, false);
             jboxSearch.setText("");
             DLMLoadList(ListWordHistory.listWordHistory);
             jListWord.setModel(dlmWord);
-            
+
         }
     }//GEN-LAST:event_jHistoryMouseClicked
 
@@ -728,21 +810,22 @@ public class DictionaryApplication extends javax.swing.JFrame {
         } else if (historyWordMode) {
             DLMLoadList(ListWordHistory.listWordHistory);
         }
-
         jListWord.setModel(dlmWord);
     }//GEN-LAST:event_jboxSearchKeyReleased
 
     private void jListWordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListWordMouseClicked
-        jBoxEdit1.setText(jListWord.getSelectedValue());
-        int pos = BinarySearch.binarySearchWord(listShow, jListWord.getSelectedValue());
-        Word w = new Word(listShow.get(pos));
-        if(searchMode) {
-            dicMana.addToHistory(w);
+        if (!dlmWord.isEmpty() && !translateMode) {
+            jBoxEdit1.setText(jListWord.getSelectedValue());
+            int pos = BinarySearch.binarySearchWord(listShow, jListWord.getSelectedValue());
+            Word w = new Word(listShow.get(pos));
+            if (searchMode) {
+                dicMana.addToHistory(w);
+            }
+            jPaneDefaultInfo.setVisible(false);
+            jPaneInfo.setVisible(true);
+            jInfoSpelling.setText(w.getWord_taget());
+            jInfoExplain.setText(w.getWord_explain());
         }
-        jPaneDefaultInfo.setVisible(false);
-        jPaneInfo.setVisible(true);
-        jInfoSpelling.setText(w.getWord_taget());
-        jInfoExplain.setText(w.getWord_explain());
     }//GEN-LAST:event_jListWordMouseClicked
 
     private void jBtnDelSearchModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnDelSearchModeActionPerformed
@@ -944,6 +1027,32 @@ public class DictionaryApplication extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jBtnDelSaveModeActionPerformed
 
+    private void jTranslateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTranslateMouseClicked
+        if (evt.getButton() == java.awt.event.MouseEvent.BUTTON1) {
+            setModeSearch(false, false, false, true);
+            jboxSearch.setText("");
+            jTextArea1.setText("");
+            jTextArea2.setText("");
+            dlmWord.clear();
+        }
+    }//GEN-LAST:event_jTranslateMouseClicked
+
+    private void jButtonTranActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTranActionPerformed
+        String in, out;
+        if (jComboBox.getSelectedIndex() == 0) {
+            in = "vi";
+            out = "en";
+        } else {
+            in = "en";
+            out = "vi";
+        }
+        try {
+            jTextArea2.setText(GoogleTranslate.translate(in, out, jTextArea1.getText()));
+        } catch (IOException ex) {
+            JOptionPane.showMessageDialog(null, "Có lỗi xảy ra");
+        }
+    }//GEN-LAST:event_jButtonTranActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -999,6 +1108,8 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JButton jBtnSaveSearchMode;
     private javax.swing.JButton jBtnSpeaker;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButtonTran;
+    private javax.swing.JComboBox<String> jComboBox;
     private javax.swing.JLabel jExit;
     private javax.swing.JLabel jHistory;
     private javax.swing.JLabel jHome;
@@ -1009,6 +1120,7 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel5;
@@ -1026,12 +1138,15 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JPanel jPaneOptionHistoryMode;
     private javax.swing.JPanel jPaneOptionSaveMode;
     private javax.swing.JPanel jPaneOptionSearchMode;
+    private javax.swing.JPanel jPaneTranslate;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -1039,6 +1154,9 @@ public class DictionaryApplication extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JLabel jTranslate;
     private javax.swing.JFormattedTextField jboxSearch;
     // End of variables declaration//GEN-END:variables
 }
