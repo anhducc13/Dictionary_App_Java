@@ -9,7 +9,7 @@ public class SQLProcessing {
     private Connection connection;
     private final String user = "ductt";
     private final String pass = "03121997";
-    private final String url = "jdbc:mysql://localhost:3306/dictionary?user=" + user
+    private final String url = "jdbc:mysql://localhost://data//dictionary?user=" + user
             + "&password=" + pass + "&useUnicode=true&characterEncoding=utf8";
     private final String tableName = "new_dic";
 

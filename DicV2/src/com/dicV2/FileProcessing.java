@@ -43,7 +43,7 @@ public class FileProcessing {
             Object read = null;
             read = (ArrayList<Word>) ojIn.readObject();
             ListWordHistory.listWordHistory = (ArrayList<Word>)read;
-            Collections.sort(ListWordHistory.listWordHistory, new WordComparator());
+//            Collections.sort(ListWordHistory.listWordHistory, new WordComparator());
         } catch (FileNotFoundException ex) {
         } catch (IOException | ClassNotFoundException ex) {
         }

@@ -23,20 +23,13 @@ public class DictionaryManagement {
     }
     
     public boolean addWordToDictionary(Word w) {
-        if(dic.insertToList(w)) {
 //            SP.insertToSQL(w);
-            return true;
-        }
-        return false;
+        
+        return dic.insertToList(w);
     }
     
     public boolean editWordInDictionary(Word oldWord, Word newWord) {
-        if(dic.editWordInList(oldWord, newWord)) {
-//            SP.editWordInSQL(oldWord, newWord);
-            return true;
-        } else {
-            return false;
-        }
+        return dic.editWordInList(oldWord, newWord);//            SP.editWordInSQL(oldWord, newWord);
     }
     
     public void deleteWordInDictionary(Word w) {
