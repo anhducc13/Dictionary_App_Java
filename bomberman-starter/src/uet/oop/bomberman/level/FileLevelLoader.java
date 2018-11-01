@@ -20,9 +20,8 @@ import uet.oop.bomberman.graphics.Sprite;
 public class FileLevelLoader extends LevelLoader {
 
     /**
-     * Ma trận chứa thông tin bản đồ, mỗi phần tử lưu giá
-     * trị kí tự đ�?c được từ ma trận bản đồ trong tệp
-     * cấu hình
+     * Ma trận chứa thông tin bản đồ, mỗi phần tử lưu giá trị kí tự đ�?c được từ
+     * ma trận bản đồ trong tệp cấu hình
      */
     private static char[][] _map;
 
@@ -83,7 +82,7 @@ public class FileLevelLoader extends LevelLoader {
                     case 'x':
                         _board.addEntity(pos, new LayeredEntity(x, y,
                                 new Grass(x, y, Sprite.grass),
-                                new Portal(x, y, Sprite.portal),
+                                new Portal(x, y, _board, Sprite.portal),
                                 new Brick(x, y, Sprite.brick)));
                         break;
                     case '*':
@@ -99,6 +98,7 @@ public class FileLevelLoader extends LevelLoader {
                         Screen.setOffset(0, 0);
                         _board.addEntity(x + y * _width, new Grass(x, y, Sprite.grass));
                         break;
+                    
                     case '1':
                         _board.addCharacter(new Balloon(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
                         _board.addEntity(x + y * _width, new Grass(x, y, Sprite.grass));

@@ -17,6 +17,7 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import uet.oop.bomberman.entities.tile.item.Item;
 
 /**
  * Quản lý thao tác điều khiển, load level, render các màn hình của game
@@ -104,7 +105,7 @@ public class Board implements IRender {
 			endGame();
 		}
 	}
-	
+        
 	protected void detectEndGame() {
 		if(_time <= 0)
 			endGame();

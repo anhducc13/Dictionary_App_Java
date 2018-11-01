@@ -1,5 +1,6 @@
 package uet.oop.bomberman.entities.character;
 
+import java.util.ArrayList;
 import uet.oop.bomberman.Board;
 import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.Entity;
@@ -11,16 +12,15 @@ import uet.oop.bomberman.input.Keyboard;
 import java.util.Iterator;
 import java.util.List;
 import uet.oop.bomberman.entities.bomb.Flame;
-import uet.oop.bomberman.entities.character.enemy.Balloon;
 import uet.oop.bomberman.entities.character.enemy.Enemy;
-import uet.oop.bomberman.entities.tile.Wall;
-import uet.oop.bomberman.entities.tile.destroyable.Brick;
+import uet.oop.bomberman.entities.tile.item.Item;
 import uet.oop.bomberman.level.Coordinates;
 
 public class Bomber extends Character {
 
     private List<Bomb> _bombs;
     protected Keyboard _input;
+    public static List<Item> _items = new ArrayList<>();
 
     /**
      * nếu giá trị này < 0 thì cho phép đặt đối tượng Bomb tiếp theo, cứ mỗi lần
@@ -85,10 +85,22 @@ public class Bomber extends Character {
         // TODO: _timeBetweenPutBombs dùng để ngăn chặn Bomber đặt 2 Bomb cùng tại 1 vị trí trong 1 khoảng thời gian quá ngắn
         // TODO: nếu 3 điều kiện trên thỏa mãn thì thực hiện đặt bom bằng placeBomb()
         // TODO: sau khi đặt, nhớ giảm số lượng Bomb Rate và reset _timeBetweenPutBombs về 0
+        if (_input.space && Game.getBombRate() > 0 && _timeBetweenPutBombs < 0) {
+
+            int xt = Coordinates.pixelToTile(_x + _sprite.getSize() / 2);
+            int yt = Coordinates.pixelToTile((_y + _sprite.getSize() / 2) - _sprite.getSize()); //subtract half player height and minus 1 y position
+
+            placeBomb(xt, yt);
+            Game.addBombRate(-1);
+
+            _timeBetweenPutBombs = 30;
+        }
     }
 
     protected void placeBomb(int x, int y) {
         // TODO: thực hiện tạo đối tượng bom, đặt vào vị trí (x, y)
+        Bomb b = new Bomb(x, y, _board);
+        _board.addBomb(b);
     }
 
     private void clearBombs() {
@@ -150,12 +162,12 @@ public class Bomber extends Character {
     public boolean canMove(double x, double y) {
         // TODO: kiểm tra có đối tượng tại vị trí chuẩn bị di chuyển đến và có thể di chuyển tới đó hay không
         for (int c = 0; c < 4; c++) { //kiểm tra tại 4 góc có vật cản hay không
-            int xt = Coordinates.pixelToTile((_x + x) + c % 2 * 11); 
-            int yt = Coordinates.pixelToTile((_y + y) + c / 2 * 12 - 13); 
-            
+            int xt = Coordinates.pixelToTile((_x + x) + c % 2 * 11);
+            int yt = Coordinates.pixelToTile((_y + y) + c / 2 * 12 - 13);
+
             // Tạo một thực thể ảo tại vị trí xt, yt để kiểm tra
             Entity a = _board.getEntity(xt, yt, this);
-            
+
             // Nếu thực thể a KO được phép đi qua (collide = false) thì không thể di chuyển
             if (!a.collide(this)) {
                 return false;
@@ -193,9 +205,16 @@ public class Bomber extends Character {
     @Override
     public boolean collide(Entity e) {
         // TODO: xử lý va chạm với Flame
+        if (e instanceof Flame) {
+            kill();
+            return false;
+        }
         // TODO: xử lý va chạm với Enemy
-
-        return true;
+        if (e instanceof Enemy) {
+            kill();
+            return true;
+        }
+        return false;
     }
 
     private void chooseSprite() {
@@ -226,4 +245,5 @@ public class Bomber extends Character {
                 break;
         }
     }
+    
 }
