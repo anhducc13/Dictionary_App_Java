@@ -14,7 +14,6 @@ import uet.oop.bomberman.entities.tile.Grass;
 import uet.oop.bomberman.entities.tile.Portal;
 import uet.oop.bomberman.entities.tile.Wall;
 import uet.oop.bomberman.entities.tile.destroyable.Brick;
-import uet.oop.bomberman.entities.tile.item.SpeedItem;
 import uet.oop.bomberman.exceptions.LoadLevelException;
 import uet.oop.bomberman.graphics.Screen;
 import uet.oop.bomberman.graphics.Sprite;
@@ -25,7 +24,7 @@ public class FileLevelLoader extends LevelLoader {
      * Ma trận chứa thông tin bản đồ, mỗi phần tử lưu giá trị kí tự đ�?c được từ
      * ma trận bản đồ trong tệp cấu hình
      */
-    private static char[][] _map;
+    
 
     public FileLevelLoader(Board board, int level) throws LoadLevelException {
         super(board, level);

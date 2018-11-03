@@ -57,7 +57,7 @@ public class Board implements IRender {
 		updateBombs();
 		updateMessages();
 		detectEndGame();
-		
+                
 		for (int i = 0; i < _characters.size(); i++) {
 			Character a = _characters.get(i);
 			if(a.isRemoved()) _characters.remove(i);
