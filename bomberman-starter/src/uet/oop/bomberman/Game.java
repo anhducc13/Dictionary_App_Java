@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+import uet.oop.bomberman.music.Music;
 
 /**
  * Tạo vòng lặp cho game, lưu trữ một vài tham số cấu hình toàn cục,
@@ -58,6 +59,7 @@ public class Game extends Canvas {
 		_input = new Keyboard();
 		
 		_board = new Board(this, _input, screen);
+                
 		addKeyListener(_input);
 	}
 	
@@ -109,8 +111,8 @@ public class Game extends Canvas {
 	}
 	
 	public void start() {
+            
 		_running = true;
-		
 		long  lastTime = System.nanoTime();
 		long timer = System.currentTimeMillis();
 		final double ns = 1000000000.0 / 60.0; //nanosecond, 60 frames per second

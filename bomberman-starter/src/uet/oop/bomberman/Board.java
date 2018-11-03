@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import uet.oop.bomberman.entities.tile.item.Item;
+import uet.oop.bomberman.music.Music;
 
 /**
  * Quản lý thao tác điều khiển, load level, render các màn hình của game
@@ -44,6 +45,7 @@ public class Board implements IRender {
 		_screen = screen;
 		
 		loadLevel(1); //start in level 1
+                
 	}
 	
 	@Override
@@ -99,8 +101,8 @@ public class Board implements IRender {
 		try {
 			_levelLoader = new FileLevelLoader(this, level);
 			_entities = new Entity[_levelLoader.getHeight() * _levelLoader.getWidth()];
-			
 			_levelLoader.createEntities();
+                        new Music().addMusicThemeGame();
 		} catch (LoadLevelException e) {
 			endGame();
 		}

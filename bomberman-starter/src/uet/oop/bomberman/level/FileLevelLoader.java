@@ -7,6 +7,8 @@ import uet.oop.bomberman.Game;
 import uet.oop.bomberman.entities.LayeredEntity;
 import uet.oop.bomberman.entities.character.Bomber;
 import uet.oop.bomberman.entities.character.enemy.Balloon;
+import uet.oop.bomberman.entities.character.enemy.Doll;
+import uet.oop.bomberman.entities.character.enemy.Kondoria;
 import uet.oop.bomberman.entities.character.enemy.Oneal;
 import uet.oop.bomberman.entities.tile.Grass;
 import uet.oop.bomberman.entities.tile.Portal;
@@ -73,18 +75,22 @@ public class FileLevelLoader extends LevelLoader {
                 int pos = x + y * getWidth();
                 char c = _map[y][x];
                 switch (c) {
+                    // Thêm grass
                     case ' ':
                         _board.addEntity(pos, new Grass(x, y, Sprite.grass));
                         break;
+                    // Thêm Wall
                     case '#':
                         _board.addEntity(pos, new Wall(x, y, Sprite.wall));
                         break;
+                    // Thêm Cửa
                     case 'x':
                         _board.addEntity(pos, new LayeredEntity(x, y,
                                 new Grass(x, y, Sprite.grass),
                                 new Portal(x, y, _board, Sprite.portal),
                                 new Brick(x, y, Sprite.brick)));
                         break;
+                    // Tường có thể phá
                     case '*':
                         _board.addEntity(x + y * _width,
                                 new LayeredEntity(x, y,
@@ -93,18 +99,31 @@ public class FileLevelLoader extends LevelLoader {
                                 )
                         );
                         break;
+                    // Thêm Bomber
                     case 'p':
                         _board.addCharacter(new Bomber(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
                         Screen.setOffset(0, 0);
                         _board.addEntity(x + y * _width, new Grass(x, y, Sprite.grass));
                         break;
-                    
+
+                    // Thêm balloon
                     case '1':
                         _board.addCharacter(new Balloon(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
                         _board.addEntity(x + y * _width, new Grass(x, y, Sprite.grass));
                         break;
+                    // Thêm oneal
                     case '2':
                         _board.addCharacter(new Oneal(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
+                        _board.addEntity(pos, new Grass(x, y, Sprite.grass));
+                        break;
+                    // Thêm Doll
+                    case '3':
+                        _board.addCharacter(new Doll(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
+                        _board.addEntity(pos, new Grass(x, y, Sprite.grass));
+                        break;
+                    // Thêm Kondoria
+                    case '4':
+                        _board.addCharacter(new Kondoria(Coordinates.tileToPixel(x), Coordinates.tileToPixel(y) + Game.TILES_SIZE, _board));
                         _board.addEntity(pos, new Grass(x, y, Sprite.grass));
                         break;
                     case 'f':
@@ -113,16 +132,6 @@ public class FileLevelLoader extends LevelLoader {
                 }
             }
         }
-
-//        // thêm Item kèm Brick che phủ ở trên
-//        int xI = 1, yI = 2;
-//        _board.addEntity(xI + yI * _width,
-//                new LayeredEntity(xI, yI,
-//                        new Grass(xI, yI, Sprite.grass),
-//                        new SpeedItem(xI, yI, Sprite.powerup_flames),
-//                        new Brick(xI, yI, Sprite.brick)
-//                )
-//        );
     }
 
 }

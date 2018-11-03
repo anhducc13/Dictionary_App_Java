@@ -212,7 +212,7 @@ public class Bomber extends Character {
         // TODO: xử lý va chạm với Enemy
         if (e instanceof Enemy) {
             kill();
-            return true;
+            return false;
         }
         return false;
     }
